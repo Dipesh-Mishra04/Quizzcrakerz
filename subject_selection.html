@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h2 {
+            color: #4caf50;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            padding: 5px;
+            font-size: 16px;
+            width: 60%;
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: #ff5722;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        a:hover {
+            background-color: #e64a19;
+        }
+    </style>
+</head>
+<body>
+    <h2>Select Test Details for <strong>{{ subject_name }}</strong></h2>
+    <form action="{{ url_for('subject_selection', subject_name=subject_name) }}" method="POST">
+        <label for="num_questions">Number of Questions:</label><br>
+        <input type="number" id="num_questions" name="num_questions" min="1" max="50" placeholder="Enter number of questions" required><br><br>
+
+        <label for="time_limit">Time Limit (in minutes):</label><br>
+        <input type="number" id="time_limit" name="time_limit" min="1" max="120" placeholder="Enter time limit in minutes" required><br><br>
+
+        <button type="submit">Start Test</button>
+    </form>
+    <a href="/dashboard">Back to Dashboard</a>
+</body>
+</html>

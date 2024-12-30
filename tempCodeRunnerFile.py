@@ -1,0 +1,1 @@
+rl = f"https://opentdb.com/api.php?amount=10&category={category_id}&type=multiple"

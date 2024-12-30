@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); /* Gradient background */
+            color: #fff;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #333;
+        }
+        .buttons {
+            margin: 20px 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745; /* Green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838; /* Darker green */
+        }
+        .form-container {
+            display: none;
+            margin-top: 20px;
+        }
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            text-align: left;
+            color: #333; /* Dark color for labels */
+            margin-bottom: 5px;
+            font-weight: bold; /* Make labels bold */
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        @media (max-width: 400px) {
+            .container {
+                width: 90%; /* Responsive width for smaller screens */
+            }
+        }
+    </style>
+    <script>
+        function toggleForm(formType) {
+            document.getElementById('loginForm').style.display = formType === 'login' ? 'block' : 'none';
+            document.getElementById('signupForm').style.display = formType === 'signup' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>WELCOME TO QUIZZCRAKERZ</h2>
+        
+        <!-- Display Error Messages if Any -->
+        {% if error %}
+        <div class="error">
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Buttons for Login and Sign Up -->
+        <div class="buttons">
+            <button onclick="toggleForm('login')">Login</button>
+            <button onclick="toggleForm('signup')">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <div id="loginForm" class="form-container">
+            <h3>Login</h3>
+            <form method="POST">
+                <input type="hidden" name="action" value="login">
+                <label for="loginEmail">Email:</label>
+                <input type="email" id="loginEmail" name="email" required>
+
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" name="password" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+       <!-- Sign Up Form -->
+        <div id="signupForm" class="form-container">
+            <h3>Sign Up</h3>
+            <form method="POST">
+                <input type="hidden" name="action" value="signup">
+                <label for="signupEmail">Your Email:</label>
+                <input type="email" id="signupEmail" name="email" required>
+                <label for="signupPassword">New Password:</label>
+                <input type="password" id="signupPassword" name="password" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
